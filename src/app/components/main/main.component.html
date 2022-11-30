@@ -1,152 +1,36 @@
 <main>
-  <div class="container mt-5">
-    <div class="row">
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 140x140"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 1</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
+  <label class="text-white">{{ fecha | date: "h:mm:ss a" }} </label>
+  <div *ngIf="mostrarLista">
+    <ul class="list-group">
+      <li
+        *ngFor="let nombreAlumno of alumnos"
+        [ngClass]="
+          cambiarColor
+            ? 'list-group-item list-group-item-action text-white bg-dark clase-color'
+            : 'list-group-item list-group-item-action bg-light clase-color'
+        "
+      >
+        Alumno: {{ nombreAlumno.nombre }} <br />Clase: {{ nombreAlumno.clase }}
+      </li>
+    </ul>
+  </div>
 
-        <h2>Producto 1</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
+  <button (click)="mostrarLista = true" class="btn btn-primary my-3 mx-3">
+    Mostrar lista
+  </button>
+  <button (click)="mostrarLista = false" class="btn btn-primary my-3 mx-3">
+    Ocultar lista
+  </button>
 
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 140x140"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 2</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
+  <br /><br />
+  <div *ngIf="mostrarLista">
+    <button (click)="cambiarColor = true" class="btn btn-primary mx-3">
+      Lista oscura
+    </button>
+    <button (click)="cambiarColor = false" class="btn btn-primary mx-3">
+      Lista original
+    </button>
 
-        <h2>Producto 2</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
-
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 180x180"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 3</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
-
-        <h2>Producto 3</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 180x180"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 4</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
-
-        <h2>Producto 4</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 180x180"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 5</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
-
-        <h2>Producto 5</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <svg
-          class="bd-placeholder-img rounded-circle"
-          width="180"
-          height="180"
-          xmlns="http://www.w3.org/2000/svg"
-          role="img"
-          aria-label="Placeholder: 180x180"
-          preserveAspectRatio="xMidYMid slice"
-          focusable="false"
-        >
-          <title>Imagen 6</title>
-          <rect width="100%" height="100%" fill="#777" />
-        </svg>
-
-        <h2>Producto 6</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-          similique mollitia aspernatur recusandae soluta illum saepe accusamus
-          at tempora. Blanditiis quod voluptas dolores perspiciatis iusto
-          doloribus mollitia odio aut sapiente?
-        </p>
-        <p><a class="btn btn-secondary" href="#">Mas info &raquo;</a></p>
-      </div>
-    </div>
+    <br />
   </div>
 </main>

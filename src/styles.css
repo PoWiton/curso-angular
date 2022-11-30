@@ -20,3 +20,6 @@
 .grid-toolbar {
   grid-area: toolbar;
 }
+body {
+  background-color: rgb(74, 74, 74);
+}
