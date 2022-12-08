@@ -5,7 +5,8 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { MainComponent } from './components/main/main.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ErrorsComponent } from './shared/errors/errors.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,9 @@ import { FormsModule } from '@angular/forms';
     NavbarComponent,
     SidebarComponent,
     MainComponent,
+    ErrorsComponent,
   ],
-  imports: [BrowserModule, FormsModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

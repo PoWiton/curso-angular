@@ -3,7 +3,7 @@
 .grid-container {
   display: grid;
   grid-template-rows: auto;
-  grid-template-columns: auto auto;
+  grid-template-columns: 10% auto;
   grid-template-areas:
     "toolbar toolbar"
     "sidebar main";

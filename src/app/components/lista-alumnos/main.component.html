@@ -1,0 +1,36 @@
+<main>
+  <label class="text-white">{{ fecha | date: "h:mm:ss a" }} </label>
+  <div *ngIf="mostrarLista">
+    <ul class="list-group">
+      <li
+        *ngFor="let nombreAlumno of alumnos"
+        [ngClass]="
+          cambiarColor
+            ? 'list-group-item list-group-item-action text-white bg-dark clase-color'
+            : 'list-group-item list-group-item-action bg-light clase-color'
+        "
+      >
+        Alumno: {{ nombreAlumno.nombre }} <br />Clase: {{ nombreAlumno.clase }}
+      </li>
+    </ul>
+  </div>
+
+  <button (click)="mostrarLista = true" class="btn btn-primary my-3 mx-3">
+    Mostrar lista
+  </button>
+  <button (click)="mostrarLista = false" class="btn btn-primary my-3 mx-3">
+    Ocultar lista
+  </button>
+
+  <br /><br />
+  <div *ngIf="mostrarLista">
+    <button (click)="cambiarColor = true" class="btn btn-primary mx-3">
+      Lista oscura
+    </button>
+    <button (click)="cambiarColor = false" class="btn btn-primary mx-3">
+      Lista original
+    </button>
+
+    <br />
+  </div>
+</main>

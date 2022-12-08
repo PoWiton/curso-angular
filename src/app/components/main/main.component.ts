@@ -1,5 +1,6 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Alumno } from '../../model/alumno';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-main',
@@ -7,28 +8,28 @@ import { Alumno } from '../../model/alumno';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  constructor() {}
-  public fecha = new Date();
-  public cambiarColor = false;
-  public mostrarLista = false;
-  public filtroClase = false;
+  emailControl = new FormControl('', [Validators.required, Validators.email]);
+  passwordControl = new FormControl('', [
+    Validators.required,
+    Validators.minLength(8),
+  ]);
+  nombreControl = new FormControl('', [Validators.required]);
+  apellidoControl = new FormControl('', [Validators.required]);
+  signedTermsControl = new FormControl(true, [Validators.requiredTrue]);
 
-  alumnos: Alumno[] = [
-    new Alumno('Lionel Messi', 'G.O.A.T'),
-    new Alumno('Rodrigo De Paul', 'Mediocampo'),
-    new Alumno('Emiliano Martinez', 'Arquero'),
-    new Alumno('Enzo Fernandez', 'Mediocampo'),
-    new Alumno('Nicolas Otamendi', 'Defensor'),
-    new Alumno('Gonzalo Montiel', 'Defensor'),
-    new Alumno('Marcos Acuña', 'Defensor'),
-    new Alumno('Lisandro Martinez', 'Defensor'),
-    new Alumno('Alexis Mac Allister', 'Mediocampo'),
-    new Alumno('Guido Rodriguez', 'Mediocampo'),
-    new Alumno('Angel Di Maria', 'Delantero'),
-  ];
-  ngOnInit(): void {
-    setInterval(() => {
-      this.fecha = new Date();
-    }, 5000);
+  loginForm = new FormGroup({
+    email: this.emailControl,
+    password: this.passwordControl,
+    nombre: this.nombreControl,
+    apellido: this.apellidoControl,
+    signedTerm: this.signedTermsControl,
+  });
+
+  constructor() {}
+
+  ngOnInit(): void {}
+
+  onSubmit() {
+    console.log(this.loginForm.value);
   }
 }

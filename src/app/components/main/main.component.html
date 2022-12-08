@@ -1,36 +1,69 @@
 <main>
-  <label class="text-white">{{ fecha | date: "h:mm:ss a" }} </label>
-  <div *ngIf="mostrarLista">
-    <ul class="list-group">
-      <li
-        *ngFor="let nombreAlumno of alumnos"
-        [ngClass]="
-          cambiarColor
-            ? 'list-group-item list-group-item-action text-white bg-dark clase-color'
-            : 'list-group-item list-group-item-action bg-light clase-color'
-        "
-      >
-        Alumno: {{ nombreAlumno.nombre }} <br />Clase: {{ nombreAlumno.clase }}
-      </li>
-    </ul>
-  </div>
+  <div class="container">
+    <div>
+      <form [formGroup]="loginForm" class="column" (ngSubmit)="onSubmit()">
+        <div class="col-6">
+          <label for="nombre" class="form-label text-white">Nombre:</label>
+          <input
+            [formControl]="nombreControl"
+            type="text"
+            class="form-control"
+          />
+          <app-errors [control]="nombreControl"></app-errors>
+        </div>
 
-  <button (click)="mostrarLista = true" class="btn btn-primary my-3 mx-3">
-    Mostrar lista
-  </button>
-  <button (click)="mostrarLista = false" class="btn btn-primary my-3 mx-3">
-    Ocultar lista
-  </button>
+        <div class="col-6">
+          <label for="apellido" class="form-label text-white">Apellido:</label>
+          <input
+            [formControl]="apellidoControl"
+            type="text"
+            class="form-control"
+          />
+          <app-errors [control]="apellidoControl"></app-errors>
+        </div>
 
-  <br /><br />
-  <div *ngIf="mostrarLista">
-    <button (click)="cambiarColor = true" class="btn btn-primary mx-3">
-      Lista oscura
-    </button>
-    <button (click)="cambiarColor = false" class="btn btn-primary mx-3">
-      Lista original
-    </button>
+        <div class="col-6">
+          <label for="email" class="form-label text-white">Email:</label>
+          <input
+            [formControl]="emailControl"
+            type="email"
+            class="form-control"
+          />
+          <app-errors [control]="emailControl"></app-errors>
+        </div>
 
-    <br />
+        <div class="col-6">
+          <label for="password" class="form-label text-white">Password:</label>
+          <input
+            [formControl]="passwordControl"
+            type="password"
+            class="form-control"
+          />
+          <app-errors [control]="passwordControl"></app-errors>
+        </div>
+        <div class="col-6">
+          <div class="form-check">
+            <input
+              [formControl]="signedTermsControl"
+              class="form-check-input"
+              type="checkbox"
+              value=""
+              checked
+            />
+            <label class="form-check-label text-white" for="flexCheckChecked">
+              Aceptar terminos
+            </label>
+          </div>
+        </div>
+        <br />
+        <button
+          [disabled]="loginForm.invalid"
+          type="submit"
+          class="btn btn-primary"
+        >
+          Enviar
+        </button>
+      </form>
+    </div>
   </div>
 </main>
